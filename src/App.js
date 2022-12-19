@@ -8,39 +8,57 @@ function App() {
     0
   );
 
+  const finalTotal = finalPrice + 78.0;
   const totalQty = state.cart.reduce((acc, val) => acc + val.qty, 0);
   return (
     <div className="App">
       {state.cart.map((item) => {
         return (
           <div key={item.id}>
-            <img src={item.imgSrc} />
-            <h1>{item.name}</h1>
-            <h4>Color:{item.color}</h4>
-            {item.size ? (
-              <h4>Size- {item.size}</h4>
-            ) : (
-              <h4>Material- {item.material}</h4>
-            )}
-            <p>{item.rating}</p>
-            <p>{item.reviews} Reviews</p>
-            <button
-              onClick={() => dispatch({ type: "DEC_QTY", payload: item.id })}
-            >
-              -
-            </button>
-            <p>{item.qty}</p>
-            <button
-              onClick={() => dispatch({ type: "INC_QTY", payload: item.id })}
-            >
-              +
-            </button>
-            <h3>{item.price * item.qty}</h3>
+            <div className="card">
+              <img src={item.imgSrc}></img>
+              <div className="details">
+                <h1>{item.name}</h1>
+                <h4>Color:{item.color}</h4>
+                {item.size ? (
+                  <h4>Size- {item.size}</h4>
+                ) : (
+                  <h4>Material- {item.material}</h4>
+                )}
+                <p>
+                  <span className="rating">
+                    {item.rating}
+                    <i class="fa-duotone fa-star-half-stroke"></i>
+                  </span>{" "}
+                  {item.reviews} Reviews
+                </p>
+              </div>
+              <button
+                className="btn"
+                onClick={() => dispatch({ type: "DEC_QTY", payload: item.id })}
+              >
+                -
+              </button>
+              <p className="qty">{item.qty}</p>
+              <button
+                className="btn"
+                onClick={() => dispatch({ type: "INC_QTY", payload: item.id })}
+              >
+                +
+              </button>
+              <h3 className="price">₹ {item.price * item.qty}</h3>
+            </div>
           </div>
         );
       })}
-      <h1>Total Quantity {totalQty}</h1>
-      <h1>Total Price {finalPrice}</h1>
+      <div className="total">
+        <h1 className="total-qty">Total Qty {totalQty}</h1>
+        <div className="subtotal">
+          <h1>SubTotal Price {finalPrice}</h1>
+          <h1>GST - 78.00</h1>
+          <h1 className="final-total">Total : {finalTotal}</h1>
+        </div>
+      </div>
     </div>
   );
 }
