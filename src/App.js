@@ -16,7 +16,7 @@ function App() {
         return (
           <div key={item.id}>
             <div className="card">
-              <img src={item.imgSrc}></img>
+              <img src={item.imgSrc} alt={item.name}></img>
               <div className="details">
                 <h1>{item.name}</h1>
                 <h4>Color:{item.color}</h4>
@@ -28,7 +28,7 @@ function App() {
                 <p>
                   <span className="rating">
                     {item.rating}
-                    <i class="fa-duotone fa-star-half-stroke"></i>
+                    <i className="fa-duotone fa-star-half-stroke"></i>
                   </span>{" "}
                   {item.reviews} Reviews
                 </p>
