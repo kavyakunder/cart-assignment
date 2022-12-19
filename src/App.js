@@ -46,7 +46,9 @@ function App() {
               >
                 +
               </button>
-              <h3 className="price">₹ {item.price * item.qty}</h3>
+              <h3 className="price">
+                ₹ {Math.round(item.price * item.qty, 3)}
+              </h3>
             </div>
           </div>
         );
