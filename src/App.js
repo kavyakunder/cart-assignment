@@ -54,11 +54,11 @@ function App() {
         );
       })}
       <div className="total">
-        <h1 className="total-qty">Total Qty {totalQty}</h1>
+        <h1 className="total-qty">Total Qty {Math.round(totalQty)}</h1>
         <div className="subtotal">
           <h1>SubTotal Price {finalPrice}</h1>
           <h1>GST - 78.00</h1>
-          <h1 className="final-total">Total : {finalTotal}</h1>
+          <h1 className="final-total">Total : {Math.round(finalTotal)}</h1>
         </div>
       </div>
     </div>
